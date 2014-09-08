@@ -1,0 +1,341 @@
+<?php
+
+
+function displayPortfolioAdmin($msg){
+		include "includes/dbConnect.php";
+
+
+		$query="SELECT * FROM portfolio ORDER BY pfid DESC";
+		$result=mysql_query($query);
+		
+		$num=mysql_numrows($result);
+
+		echo "<HR><BR><b><center>Current Portfolio</center></b><br>";
+		$i=0;
+		if ($num != ''){
+			echo "<table width=100%>";
+			echo "<tr style=\"background-color: #FFAAFF;\"><td><b>Thumb</b></td><td><b>Title</b></td><td><b>Text</b></td><td><b>Change</b></td></tr>";
+			while ($i < $num) {
+				$title=mysql_result($result,$i,"title");
+				$id=mysql_result($result,$i,"pfid");
+				$text=mysql_result($result,$i,"text");
+				$picLoc=mysql_result($result,$i,"filename");
+					
+				//$query="SELECT * FROM resume_pics where res_id=$id";
+				//echo $query;
+				$result2=mysql_query($query);
+				
+				$numpics=mysql_numrows($result2);
+					if (($i%2) == 1){
+						echo "<tr id=\"row".$i."\" style=\"background-color: #B4B4B4;\">";
+					} else {
+						echo "<tr id=\"row".$i."\" style=\"background-color: #E1E1E1;\">";
+					}
+					if ($picLoc != ""){
+						//echo "<td width=120px><a href=\"images/newsUploads/".$picLoc."\" title=\"".$text."\"rel=\"lightbox[newstest]\"><img src=\"images/newsUploads_thumbs/tn_".$picLoc."\"></a><br></a></td>";
+						echo "<td width=5%>*</td>";
+					} else {
+							echo "<td width=5%>none</td>";
+					}
+					echo "<td width=35%>".$title."</td>";
+					echo "<td width=52% title=\"".$text."\">".substr(stripslashes($text),0,100)."...</td>";
+					echo "<td width=7%><img src=\"images/edit.png\" onClick=\"showEdit('row".$i."edit')\">&nbsp;<img src=\"images/delete.png\" onClick=\"removePost('m_news',$id);\"></td>";
+
+					putPortfolioEditDiv($id, $i);
+					echo "</tr>";
+					$i++;
+				}
+				echo "</table>";
+		} else {
+			echo "well you have no portfolio yet!  Add one!<BR><BR>";
+		}
+		
+	
+		
+	//	mysql_close();
+		//mysql_free_result($result);
+		
+}
+
+
+
+function putPortfolioEditDiv($pfid, $ct){
+	include "includes/dbConnect.php";
+	
+					echo "<tr id=\"row".$ct."edit\" style=\"background-color: #FFD4FF; display:none;\">";
+		
+			echo "<td id=\"gangster\" colspan=5 height=300px>";
+			
+	
+				
+			$query="SELECT * FROM portfolio where pfid=$pfid ORDER BY pfid DESC";
+			//echo $query."<BR>";
+		$result=mysql_query($query);
+		
+		$num=mysql_numrows($result);
+		
+		//mysql_close();
+		$i=0;
+		
+		
+			$title=mysql_result($result,$i,"title");
+			$text=mysql_result($result,$i,"text");
+			$picLoc=mysql_result($result,$i,"filename");
+			$link=mysql_result($result,$i,"link");
+			
+	echo "<div id=\"row".$ct."editDiv\" class=\"editDiv\">";
+	?>
+				<form id="newsForm" action="admin_portfolio.php" method="POST" enctype="multipart/form-data">
+					Title: <input type="text" class="newPostInput" id="title" name="title" size=60 onKeyUp="doOnChange(this);" oVal="<?php echo $title ?>" value="<?php echo $title ?>"><BR>
+					Text: <textarea class="newPostInput" rows=15 cols=45 onKeyUp="doOnChange(this);" oVal="<?php echo $text ?>" id="text" name="text"><?php echo stripslashes($text) ?></textarea><BR>
+					<?php
+						if ($link != ''){
+							echo "Try this: <a href=\"".$link."\">".$link."</a>";
+						}
+					?>
+					
+					Link: <input class="newPostInput" type="text" name="link" value="<?php echo $link ?>" onKeyUp="doOnChange(this);" oVal="<?php echo $link ?>"<BR>
+					<?php echo "<input type=\"hidden\" class=\"newPostInput\" id=\"nidedit\" name=\"nid\" value=\"$nid\">"; ?>
+					<input type="hidden" name="MAX_FILE_SIZE" value="20000000">
+					<input type="hidden" name="editAttempt" value="true"><br>
+					<input type="hidden" name="rownumber" value=<?php echo $ct ?>>
+					<input type="hidden" name="id" value=<?php echo $pfid ?>>
+						<?php 
+						if ($picLoc != ""){
+							echo "<a href=\"images/portfolio_images/".$picLoc."\" rel=\"lightbox\"><img src=\"images/portfolio_images_thumbs/tn_".$picLoc."\"></a><BR>"; 
+							
+						} else {
+							echo "Add a picture below<BR>";
+							echo "<input name=\"userfile\" type=\"file\" id=\"userfile\"><BR>";
+						}
+						?>
+					<input type="submit" class="newPostInput" value="Submit the edit" >
+					<input type="button" class="newPostInput" value="close this window" onClick="hideEdit('row<?php echo $ct ?>edit');" >
+				</form>
+			
+		 <!-- from the first line of this function -->
+	<?php
+		echo "</div></td></tr></tr></tr>";
+		//mysql_free_result($result);
+		
+}
+
+function displayPortfolioForm($msg){
+	?>
+		<html>
+		<head>
+		<title>Portfolio Administration</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<link href="includes/admin.css" rel="stylesheet" type="text/css">
+		<link href="includes/test.css" rel="stylesheet" type="text/css">
+		<script language="JavaScript" type="text/Javascript" src="includes/tools.js"></script>
+	<link rel="stylesheet" href="includes/lightbox.css" type="text/css" media="screen">
+<script type="text/javascript" src="includes/prototype.js"></script>
+<script type="text/javascript" src="includes/scriptaculous.js?load=effects,builder"></script>
+<script type="text/javascript" src="includes/lightbox.js"></script>
+
+
+
+		<script language="JavaScript" type="text/JavaScript">
+		<!--
+
+		//-->
+		</script>
+
+		</head>
+		
+		<body>
+		<div id="centeringDiv">
+					<?php include "includes/topNav.php"; ?>
+		<?php echo $msg."<BR>"; ?>
+			<a href=# onClick="addNew('addNew')">+ Add new piece into the portfolio</a>
+			<div id="addNew"  class="newPost">
+				<form id="newsForm" action="admin_portfolio.php" method="POST" enctype="multipart/form-data">
+					<table border=0px width=100% align=center>
+						<tr>
+							<td align="center" width=25%>Title:</td>
+							<td width=75%><input class="newPostInput" type="text" name="title"></td>
+						</tr>
+						<tr>
+							<td align="center" width=25%>Text:</td>
+							<td width=75%><textarea class="newPostInput" rows=15 cols=45 name="text"></textarea></td>
+						</tr>
+						<tr>		
+							<td align="center" width=25%>Link:</td>
+							<td width=75%><input class="newPostInput" type="text" name="link"></td>
+						</tr>
+						<tr>
+							<td align="center" width=25%>Image:</td>
+							<td width=75%><input class="newPostInput" name="userfile" type="file" id="userfile"></td>
+						</tr>
+						<tr>
+								<td colspan=2 align=center><input class="newPostInput" type="submit" value="Post this"></td>
+						</tr>
+					</table>
+					<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+					<input type="hidden" name="createAttempt" value="true">
+				</form>
+			<input type="button" class="newPostInput" value="cancel" onClick="hideEdit('addNew')";>
+		</div>
+		
+<?php
+
+
+							echo "<div id=\"AdminTable\">";
+							displayPortfolioAdmin("");
+							echo "<BR><HR><BR>";
+							displayBoxForm(1, "business");
+							displayBoxAdmin(1, "business");
+							echo "<BR><HR><BR>";
+							displayBoxForm(2, "SEO");
+							displayBoxAdmin(2, "SEO");
+							echo "<BR><HR><BR>";
+							displayBoxForm(3, "promo");
+							displayBoxAdmin(3, "promo");
+							echo "</div>";
+
+
+}
+
+function displayBoxForm($which, $section){
+	$row = $which.$section;
+	?>
+	<a href=# onClick="addNew('addNew<?php echo $row; ?>')">+ Add new piece into the <?php echo $section ?> section</a>
+			<div id="addNew<?php echo $row ?>"  class="newPost">
+				<form id="newsForm" action="admin_portfolio.php" method="POST" enctype="multipart/form-data">
+					<table border=0px width=100% align=center>
+						<tr>
+							<td align="center" width=25%>Title:</td>
+							<td width=75%><input class="newPostInput" type="text" name="title"></td>
+						</tr>
+						<tr>
+							<td align="center" width=25%>Text:</td>
+							<td width=75%><textarea class="newPostInput" rows=15 cols=45 name="text"></textarea></td>
+						</tr>
+						<tr>		
+							<td align="center" width=25%>Link:</td>
+							<td width=75%><input class="newPostInput" type="text" name="link"></td>
+						</tr>
+						<tr>
+							<td align="center" width=25%>Image:</td>
+							<td width=75%><input class="newPostInput" name="realpic" type="file" id="realpic"></td>
+						</tr>
+						<tr>
+							<td align="center" width=25%>Thumbnail:</td>
+							<td width=75%><input class="newPostInput" name="userfile" type="file" id="userfile"></td>
+						</tr>
+						<tr>
+								<td colspan=2 align=center><input class="newPostInput" type="submit" value="Post this"></td>
+						</tr>
+					</table>
+					<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+					<input type="hidden" name="createBoxAttempt" value="true">
+					<input type="hidden" name="which" value=<?php echo $which ?>>
+				</form>
+			<input type="button" class="newPostInput" value="cancel" onClick="hideEdit('addNew<?php echo $row; ?>')";>
+		</div>
+<?php
+}
+
+function putBoxEditDiv($ppid, $ct, $which, $section){
+	include "includes/dbConnect.php";
+	$row = $ct.$which.$section;
+	echo "<tr id=\"row".$row."edit\" style=\"background-color: #FFD4FF; display:none;\">";
+	echo "<td id=\"gangster\" colspan=5 height=300px>";
+	$query="SELECT * FROM portfolio_page where ppid=$ppid";
+	$result=mysql_query($query);
+	$num=mysql_numrows($result);
+	$i=0;
+	$title=mysql_result($result,$i,"title");
+	$text=mysql_result($result,$i,"text");
+	$picLoc=mysql_result($result,$i,"thumb_filename");
+	$realpic=mysql_result($result,$i,"filename");
+	$link=mysql_result($result,$i,"link");
+	$row = $ct.$which.$section;
+	echo "<div id=\"row".$ct.$which.$section."editDiv\" class=\"editDiv\">";
+	?>
+				<form id="newsForm" action="admin_portfolio.php" method="POST" enctype="multipart/form-data">
+					Title: <input type="text" class="newPostInput" id="title" name="title" size=60 onKeyUp="doOnChange(this);" oVal="<?php echo $title ?>" value="<?php echo $title ?>"><BR>
+					Text: <textarea class="newPostInput" rows=15 cols=45 onKeyUp="doOnChange(this);" oVal="<?php echo $text ?>" id="text" name="text"><?php echo stripslashes($text) ?></textarea><BR>
+					<?php
+						if ($link != ''){
+							echo "Try this: <a href=\"".$link."\">".$link."</a>";
+						}
+					?>
+					
+					Link: <input class="newPostInput" type="text" name="link" value="<?php echo $link ?>" onKeyUp="doOnChange(this);" oVal="<?php echo $link ?>"<BR>
+					<?php echo "<input type=\"hidden\" class=\"newPostInput\" id=\"nidedit\" name=\"nid\" value=\"$nid\">"; ?>
+					<input type="hidden" name="MAX_FILE_SIZE" value="20000000">
+					<input type="hidden" name="editBoxAttempt" value="true"><br>
+					<input type="hidden" name="rownumber" value=<?php echo $ct ?>>
+					<input type="hidden" name="which" value=<?php echo $which ?>>
+					<input type="hidden" name="id" value=<?php echo $pfid ?>>
+						<?php 
+					
+							echo "<a href=\"images/portfolio_images/".$realpic."\" rel=\"lightbox\"><img src=\"images/portfolio_images_thumbs/tn_".$picLoc."\"></a><BR>"; 
+
+						?>
+					<input type="submit" class="newPostInput" value="Submit the edit" >
+					<input type="button" class="newPostInput" value="close this window" onClick="hideEdit('row<?php echo $row ?>edit');" >
+				</form>
+			
+		 <!-- from the first line of this function -->
+	<?php
+		echo "</div></td></tr></tr></tr>";
+		//mysql_free_result($result);
+		
+}
+
+function displayBoxAdmin($which, $section){
+		include "includes/dbConnect.php";
+		$query="SELECT * FROM portfolio_page where `which`=$which ORDER BY ppid DESC";
+		$result=mysql_query($query);
+		
+		$num=mysql_numrows($result);
+
+		echo "<HR><BR><b><center>Current $section Box</center></b><br>";
+		$i=0;
+		if ($num != ''){
+			echo "<table width=100%>";
+			echo "<tr style=\"background-color: #FFAAFF;\"><td><b>Thumb</b></td><td><b>Title</b></td><td><b>Text</b></td><td><b>Change</b></td></tr>";
+			while ($i < $num) {
+				$title=mysql_result($result,$i,"title");
+				$id=mysql_result($result,$i,"ppid");
+				$text=mysql_result($result,$i,"text");
+				$picLoc=mysql_result($result,$i,"filename");
+				$thumb_filename=mysql_result($result,$i,"thumb_filename");
+
+				$result2=mysql_query($query);
+				
+				$numpics=mysql_numrows($result2);
+					if (($i%2) == 1){
+						echo "<tr id=\"row".$i."\" style=\"background-color: #B4B4B4;\">";
+					} else {
+						echo "<tr id=\"row".$i."\" style=\"background-color: #E1E1E1;\">";
+					}
+					if ($picLoc != ""){
+						//echo "<td width=120px><a href=\"images/newsUploads/".$picLoc."\" title=\"".$text."\"rel=\"lightbox[newstest]\"><img src=\"images/newsUploads_thumbs/tn_".$picLoc."\"></a><br></a></td>";
+						echo "<td width=5%>*</td>";
+					} else {
+							echo "<td width=5%>none</td>";
+					}
+					echo "<td width=35%>".$title."</td>";
+					echo "<td width=52% title=\"".$text."\">".substr(stripslashes($text),0,100)."...</td>";
+					echo "<td width=7%><img src=\"images/edit.png\" onClick=\"showEdit('row".$i.$which.$section."edit')\">&nbsp;<img src=\"images/delete.png\" onClick=\"removePost('m_news',$id);\"></td>";
+
+					putBoxEditDiv($id, $i, $which, $section);
+					echo "</tr>";
+					$i++;
+				}
+				echo "</table>";
+		} else {
+			echo "well you have no portfolio yet!  Add one!<BR><BR>";
+		}
+		
+	
+		
+	//	mysql_close();
+		//mysql_free_result($result);
+		
+}
+?>

@@ -1,0 +1,20 @@
+.sec {
+	color: white;
+	font-family: arial;
+}
+.sec:link {
+	color: white;
+	text-decoration: none;
+}
+.sec:visited {
+	color: white;
+	text-decoration: none;
+}
+.sec:hover {
+	color: #735515;
+	text-decoration: none;
+}
+.sec:active {
+	color: white;
+	text-decoration: none;
+}
