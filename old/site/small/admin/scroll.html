@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+		<head>
+		<title>Home Page Administration</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<script type="text/javascript" src="includes/core.js"></script>
+<script type="text/javascript" src="includes/more.js"></script>
+
+<link rel="stylesheet" href="includes/thick.css" type="text/css" media="screen" />
+		<script language="JavaScript" type="text/JavaScript">
+		<!--
+		
+		function dothis(){
+			var scroll2 = new Scroller('outerdiv', {area: 50, velocity: 1});
+			// Mousemove
+			$('outerdiv').addEvent('mouseover', scroll2.start.bind(scroll2));
+			$('outerdiv').addEvent('mouseout', scroll2.stop.bind(scroll2));
+			
+			$('hover').onmouseover = hover;
+			var Tips1 = new Tips($$('.Tips4'), {
+				fixed: false
+			});
+
+
+	}
+	
+	function hover(){
+		alert("hovering");
+		  var newRadioButton = document.createElement("<INPUT TYPE='RADIO' NAME='RADIOTEST' VALUE='First Choice'>")
+    document.body.insertBefore(newRadioButton);
+
+	}
+	function do(){
+			alert("asdf");
+	}
+		</script>
+
+		</head>
+		
+		<body onload="dothis()">
+			<div id="outerdiv" style="height: 300px; width:500px; border:1px solid black; overflow:hidden; margin: 0 auto;">
+			<div id="innerdiv" style="height: 1000px; width:2000px;">
+				abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+			</div>
+		</div>
+		<BR><BR><BR>
+		<div id="hover" style="width:30px; border:1px solid black;">go over me</div><BR><BR>
+		<h3>Tips 4</h3>
+Custom className: <a href="http://www.mootools.ssnet" onclick="return false;" class="Tips4" title="<div style='border:3px solid black; height:300px; width:300px; background:red; '><span onclick='do()'>x</span></div>">Mootools.net</a>
+		
+		<BR><BR><BR><input alt="#TB_inline?height=300&width=400&inlineId=myOnPageContent" title="add a caption to title attribute / or leave blank" class="thickbox" type="button" value="Show" />  
+<a onMouseOver="window.location=this.href" href="#TB_inline?height=155&width=300&inlineId=hiddenModalContent&modal=true" class="thickbox">Show hidden modal content.</a>
+<div id="myOnPageContent" style="background:red; border: 2px solid black; display:none;"><p>THis is thie shit in the thing</p><BR><BR></div>
+		
+		<div id="hiddenModalContent" style="display:none">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
+<p style="text-align:center"><input type="submit" id="Login" value="&nbsp;&nbsp;Ok&nbsp;&nbsp;" onclick="tb_remove()" /></p>
+</div>
+
+		</body>
+	</html>

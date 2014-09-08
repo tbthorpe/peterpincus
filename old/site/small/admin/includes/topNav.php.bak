@@ -1,0 +1,8 @@
+<?php 
+			echo "<img src='images/header_t.png'>";
+			echo "<div id='inner' style='height:100%; padding:10px; background-color:white;'>";
+			echo "<div id=\"topNav\">";
+		echo "<a href=\"admin_homepage.php\">News</a>&nbsp;|&nbsp;<a href=\"admin_photo.php\">Photos</a>&nbsp;|&nbsp;<a href=\"logout.php\">Logout</a>";
+		echo "</div>";
+		
+?>
