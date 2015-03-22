@@ -26,6 +26,9 @@ class NewsController extends AppController {
 	function admin_index() {
 		$this->layout = 'admin';
 		$this->News->recursive = 0;
+        $this->paginate = array(
+            'order' => array('News.created' => 'DESC')
+        );
 		$this->set('news', $this->paginate());
 	}
 

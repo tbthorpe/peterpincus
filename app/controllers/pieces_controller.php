@@ -84,6 +84,9 @@ class PiecesController extends AppController {
 	}
 
 	function admin_index() {
+        $this->paginate = array(
+            'order' => array('Piece.created' => 'DESC')
+        );
 		$this->layout = 'admin';
 		$this->Piece->recursive=1;
 		// $this->paginate['Piece']['contain'] = array (
