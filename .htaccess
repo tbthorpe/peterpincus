@@ -1,3 +1,6 @@
+RewriteCond %{HTTP_HOST} ^www\.peterpincus\.com [NC]
+RewriteRule ^(.*)$ http://peterpincus.com/$1 [L,R=301]
+
 AddType x-mapp-php5 .php
 RewriteEngine on
 RewriteBase /

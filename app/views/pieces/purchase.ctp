@@ -1,7 +1,8 @@
 <div class="purchase-page">
 	<div id="purchase-container">
 		<ul id="buyables" >
-			<?php if(!empty($pieces)){ ?>
+<?php if (false): ?>
+			<?php if(!empty($pieces) && false){ ?>
 		   	<?php foreach ($pieces as $piece): ?>
 				<li class="buyable">
 					<a href="<?php echo $piece['Piece']['etsyLink']; ?>" target="_blank"><img class="thumb" title="<?php echo $piece['Piece']['title']; ?>" alt="<?php echo $piece['Piece']['description']; ?>" big="<?php echo $piece['Piece']['filename']; ?>" src="/img/pieces/<?php 
@@ -13,8 +14,9 @@
 				</li>
 			<?php endforeach; ?>
 			<?php } else{ ?>
-				Update - Coming *very* soon. Work should be up here and buyable by Saturday, Sept 21 at noon!. Check back during the week for more updates!
+				* Update coming soon - stay tuned *
 				<?php } ?>
+<?php endif; ?>
 		</ul>
 		<div style="clear:both;">
 	</div>

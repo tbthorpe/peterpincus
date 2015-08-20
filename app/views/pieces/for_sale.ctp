@@ -10,7 +10,7 @@
 <div class="purchase-page">
 	<div id="purchase-container">
 		<ul id="buyables" >
-			<?php if(!empty($pieces)){ ?>
+			<?php if(false && !empty($pieces)){ ?>
 		   	<?php foreach ($pieces as $piece): ?>
 				<li class="buyable">
 					<a class="work_thumb_<?php echo $piece['Piece']['id']; ?>"><img class="thumb" title="<?php echo $piece['Piece']['title']; ?>" alt="<?php echo $piece['Piece']['description']; ?>" big="<?php echo $piece['Piece']['filename']; ?>" src="/img/pieces/<?php 
@@ -30,7 +30,7 @@
 				</div>
 			<?php endforeach; ?>
 			<?php } else{ ?>
-				Coming soon
+				* Update coming soon - stay tuned *
 				<?php } ?>
 		</ul>
 		<div style="clear:both;"></div>
