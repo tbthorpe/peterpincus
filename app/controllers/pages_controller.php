@@ -76,4 +76,7 @@ class PagesController extends AppController {
 		}
 
 	}
+	function newhome(){
+		$this->layout = 'newdefault';
+	}	
 }

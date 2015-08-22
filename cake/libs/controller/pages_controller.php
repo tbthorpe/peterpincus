@@ -37,4 +37,10 @@ class PagesController extends AppController {
 		$content = $this->Page->find('first', array('fields'=>array('Page.content'),'conditions'=>array('name'=>'home')));
 		$this->set('content', $content['Page']['content']);
 	}	
+
+	function newhome(){
+		$content = $this->Page->find('first', array('fields'=>array('Page.content'),'conditions'=>array('name'=>'home')));
+		$this->set('content', $content['Page']['content']);
+	}	
+
 }
