@@ -11,16 +11,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="show-on-small navbar-brand page-scroll" href="#page-top"><span class="peter-name">sPETER PINCUS</span><span class='peter-title'>CERAMIC ARTIST</span></a>
+                <a class="show-on-small navbar-brand page-scroll" href="#page-top"><span class="peter-name">Peter Pincus</span><span class='peter-title'>CERAMIC ARTIST</span></a>
             </div>
 
             <div class="collapse navbar-collapse show-on-big" style="position:relative;" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar">
                     <li>
-                        <a class="page-scroll" href="#about">WORK</a>
+                        <a class="page-scroll" href="#work">WORK</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">NEWS</a>
+                        <a class="page-scroll" href="#news">NEWS</a>
                     </li>
                     
                     <li>
@@ -31,7 +31,7 @@
                     </li>
                 </ul>
                 <div class="show-on-big full-page-header-logo">
-                        <span class="peter-name">PETER PINCUS</span><span class='peter-title'>CERAMIC ARTIST</span>
+                        <span class="peter-name">Peter Pincus</span><span class='peter-title'>CERAMIC ARTIST</span>
                 </div>
             </div>
             <!-- /.navbar-collapse -->
@@ -42,15 +42,27 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <!-- <h1>Your Favorite Source of Free Bootstrap Themes</h1>
-                <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a> -->
             </div>
         </div>
     </header>
 
-    <section class="bg-primary" id="about">
+    <section class="bg-primary" id="work">
+        <div class="container current-work-slider">
+
+            <a class="fancybox" imglist="/img/work-1-big.jpg,/img/work-4-big.jpg, /img/work-2-big.jpg" title="Lorem ipsum dolor sit amet"><img src="/img/work-1.jpg" alt=""></a>
+
+            <a class="fancybox" imglist="/img/work-1-big.jpg,/img/work-2-big.jpg"><img src="/img/work-2.jpg" alt=""></a>
+
+            <a class="fancybox" imglist="/img/work-5-big.jpg,/img/work-4-big.jpg, /img/work-3-big.jpg"><img src="/img/work-3.jpg" alt=""></a>
+
+            <a class="fancybox" imglist="/img/work-2-big.jpg,/img/work-5-big.jpg, /img/work-2-big.jpg"><img src="/img/work-4.jpg" alt=""></a>
+
+            <a class="fancybox" imglist="/img/work-4-big.jpg,/img/work-3-big.jpg, /img/work-2-big.jpg"><img src="/img/work-5.jpg" alt=""></a>
+
+        </div>
+    </section>
+
+    <section class="bg-primary" id="news">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -238,6 +250,8 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
+    <script src="js/underscore.js"></script>
+
     <!-- Plugin JavaScript -->
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/jquery.fittext.js"></script>
@@ -245,3 +259,37 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <script src="js/fancybox/new.jquery.fancybox.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    
+    <script type="text/javascript">
+        
+        $(".current-work-slider a").click(function() {
+            var that = $(this);
+            var images =  that.attr('imglist').split(',');
+            var toOpen = _.map(images, function(img){ return {href: img} });
+            $.fancybox.open(toOpen, {
+                helpers : {
+                    title: {
+                        type: 'outside',
+                        position: 'right'
+                    }
+                },
+                nextEffect: 'none',
+                prevEffect: 'none',
+            });
+        });
+
+        $(document).ready(function(){
+          $('.current-work-slider').bxSlider({
+            slideWidth: 280,
+            minSlides: 2,
+            maxSlides: 3,
+            moveSlides: 1,
+            slideMargin: 30,
+            infiniteLoop: false,
+            pager: false,
+          });
+        });
+    </script>

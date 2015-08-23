@@ -8,6 +8,7 @@ html,
 body {
     width: 100%;
     height: 100%;
+    background-color: #817e7c;
 }
 
 body {
@@ -16,7 +17,7 @@ body {
 
 hr {
     max-width: 50px;
-    border-color: #f05f40;
+    border-color: #e16d2f;
     border-width: 3px;
 }
 
@@ -25,7 +26,7 @@ hr.light {
 }
 
 a {
-    color: #f05f40;
+    color: #e16d2f;
     -webkit-transition: all .15s;
     -moz-transition: all .15s;
     transition: all .15s;
@@ -52,7 +53,7 @@ p {
 }
 
 .bg-primary {
-    background-color: #f05f40;
+    background-color: #817e7c;
 }
 
 .bg-dark {
@@ -66,6 +67,8 @@ p {
 
 section {
     padding: 100px 0;
+    width:970px;
+    margin:0 auto;
 }
 
 aside {
@@ -87,9 +90,9 @@ aside {
     border-color: rgba(34,34,34,.05);
     font-family: 'Helvetica Neue',Arial,sans-serif;
     background-color: #fff;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
 }
 
 .navbar-default .navbar-header .navbar-brand {
@@ -112,19 +115,21 @@ aside {
 .navbar-default .nav > li>a,
 .navbar-default .nav>li>a:focus {
     text-transform: uppercase;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 100;
     color: #222;
 }
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: #f05f40;
+    /*color: #e16d2f;*/
+    color: #e16d2f;
+
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: #f05f40!important;
+    color: #e16d2f!important;
     background-color: transparent;
 }
 
@@ -246,7 +251,7 @@ aside {
     }
     .navbar-default.affix-top {
         border-color: rgba(34,34,34,.05);
-        top:50%;
+        top:40%;
         background-color: rgba(255,255,255,.75);
         min-height:100px;
     }
@@ -256,22 +261,25 @@ aside {
     /******************/
     .navbar-default.affix {
         border-color: rgba(34,34,34,.05);
-        background-color: #fff;
+        background-color: #dedede;
 		top:0;
-		min-height:80px;
+		max-height:50px;
     }
     .navbar-default.affix .nav > li{
-        margin-top:18px;
+        margin-top:12px;
+    }
+    .navbar-default.affix .full-page-header-logo{
+        top:13px;
     }
     .navbar-default.affix .full-page-header-logo .peter-name{
-        font-size:36px;
+        font-size:28px;
         margin-bottom:5px;
-        line-height:36px;
+        line-height:28px;
         display:block;
     }
     .navbar-default.affix .full-page-header-logo .peter-title{
-        font-size:24px;
-        line-height:24px;
+        font-size:18px;
+        line-height:18px;
         display:block;
     }
 
@@ -279,7 +287,7 @@ aside {
 
     .navbar-default.affix .navbar-header .navbar-brand {
         font-size: 14px;
-        color: #f05f40;
+        color: #e16d2f;
     }
 
     .navbar-default.affix .navbar-header .navbar-brand:hover,
@@ -294,7 +302,7 @@ aside {
 
     .navbar-default.affix .nav > li>a:hover,
     .navbar-default.affix .nav>li>a:focus:hover {
-        color: #f05f40;
+        color: #e16d2f;
     }
 }
 
@@ -450,7 +458,7 @@ header .header-content .header-content-inner p {
 }
 
 .text-primary {
-    color: #f05f40;
+    color: #e16d2f;
 }
 
 .no-gutter > [class*=col-] {
@@ -512,9 +520,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-    border-color: #f05f40;
+    border-color: #e16d2f;
     color: #fff;
-    background-color: #f05f40;
+    background-color: #e16d2f;
     -webkit-transition: all .15s;
     -moz-transition: all .15s;
     transition: all .15s;
@@ -555,12 +563,12 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-    border-color: #f05f40;
-    background-color: #f05f40;
+    border-color: #e16d2f;
+    background-color: #e16d2f;
 }
 
 .btn-primary .badge {
-    color: #f05f40;
+    color: #e16d2f;
     background-color: #fff;
 }
 
@@ -600,4 +608,11 @@ img::-moz-selection {
 
 body {
     webkit-tap-highlight-color: #222;
+}
+
+.bx-controls-direction .bx-next,
+.bx-controls-direction .bx-prev{
+    -webkit-transition: all 0s;
+    -moz-transition: all 0s;
+    transition: all 0s;
 }

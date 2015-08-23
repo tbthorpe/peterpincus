@@ -187,6 +187,14 @@ td,
 th {
   padding: 0;
 }
+
+.preload * {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+
 /*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
 @media print {
   *,
@@ -1600,7 +1608,8 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 970px;
+    /*1170 ^^*/
   }
 }
 .container-fluid {
@@ -4321,7 +4330,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-brand {
   float: left;
-  height: 50px;
+  height: 65px;
   padding: 15px 15px;
   font-size: 18px;
   line-height: 20px;
@@ -4541,7 +4550,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: rgba(255,255,255,0.75);
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
