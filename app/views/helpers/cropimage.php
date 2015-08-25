@@ -40,7 +40,7 @@ class CropimageHelper extends Helper {
             }); 
 
             $(window).load(function () { 
-                $('#thumbnail').imgAreaSelect({ aspectRatio: '1:1', onSelectChange: preview }); 
+                $('#thumbnail').imgAreaSelect({ aspectRatio: '175:193', onSelectChange: preview }); 
             }); 
             </script>"); 
     } 

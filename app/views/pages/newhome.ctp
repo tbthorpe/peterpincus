@@ -24,10 +24,10 @@
                     </li>
                     
                     <li>
-                        <a class="page-scroll" href="#portfolio">PURCHASE</a>
+                        <a class="page-scroll" href="#purchase">PURCHASE</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">ABOUT</a>
+                        <a class="page-scroll" href="#about">ABOUT</a>
                     </li>
                 </ul>
                 <div class="show-on-big full-page-header-logo">
@@ -48,17 +48,40 @@
 
     <section class="bg-primary" id="work">
         <div class="container current-work-slider">
+            <?php foreach ($newWorkCategories as $cat): 
+            $imglist = '';
+            foreach ($cat['Pieces'] as $p){ $imglist .= '/img/pieces/'.$p['filename'].',';}
+                $imglist = substr($imglist, 0,-1);
+?>
+                <a class="fancybox" imglist="<?php echo $imglist ?>" title="<?php echo $cat['Category']['copy']; ?>">
+                    <img src="<?php echo '/img/categories/'.$cat['Category']['filename']; ?>" alt="">
+                    <div class="current-title"><?php echo $cat['Category']['title']; ?></div>
+                </a>                
+            <?php endforeach; ?>
 
-            <a class="fancybox" imglist="/img/work-1-big.jpg,/img/work-4-big.jpg, /img/work-2-big.jpg" title="Lorem ipsum dolor sit amet"><img src="/img/work-1.jpg" alt=""></a>
+        </div>
+    </section>
 
-            <a class="fancybox" imglist="/img/work-1-big.jpg,/img/work-2-big.jpg"><img src="/img/work-2.jpg" alt=""></a>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="left">
+            </div>
+            <div class="right">
+            </div>
+        </div>
+    </section>
 
-            <a class="fancybox" imglist="/img/work-5-big.jpg,/img/work-4-big.jpg, /img/work-3-big.jpg"><img src="/img/work-3.jpg" alt=""></a>
-
-            <a class="fancybox" imglist="/img/work-2-big.jpg,/img/work-5-big.jpg, /img/work-2-big.jpg"><img src="/img/work-4.jpg" alt=""></a>
-
-            <a class="fancybox" imglist="/img/work-4-big.jpg,/img/work-3-big.jpg, /img/work-2-big.jpg"><img src="/img/work-5.jpg" alt=""></a>
-
+    <section class="bg-primary" id="purchase">
+        <div class="container">
+            <?php debug($buyableWork); ?>
+            <?php foreach ($buyableWork as $piece): 
+            debug($work);?>
+                <img class="thumb" title="<?php echo $piece['title']; ?>" alt="<?php echo $piece['description']; ?>" que="<?php echo $piece['id']; ?>" sale="<?php echo $piece['purchaseStatus']; ?>"  big="<?php echo $piece['filename']; ?>" pr="<?php echo $piece['price']; ?>" src="/img/pieces/<?php 
+                        $ext = strtolower(substr(basename($piece['filename']), strrpos(basename($piece['filename']), ".") + 1)); 
+                        $extLen = strlen($ext)+1;
+                        $filename = substr_replace($piece['filename'],"_tn",strlen($piece['filename'])-$extLen,0);
+                        echo $filename; ?>">            
+            <?php endforeach; ?>
         </div>
     </section>
 
@@ -268,7 +291,8 @@
         $(".current-work-slider a").click(function() {
             var that = $(this);
             var images =  that.attr('imglist').split(',');
-            var toOpen = _.map(images, function(img){ return {href: img} });
+            var title =  that.attr('title');
+            var toOpen = _.map(images, function(img){ return {href: img, title: title} });
             $.fancybox.open(toOpen, {
                 helpers : {
                     title: {

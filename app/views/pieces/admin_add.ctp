@@ -1,5 +1,7 @@
 <div class="pieces form">
+
 <?php echo $form->create('Piece', array('action' => 'createimagestep2', "enctype" => "multipart/form-data"));?> 
+<?php //echo $this->Form->create('Piece',array('type'=>'file'));?>
 	<fieldset>
 		<legend><?php __('Admin Add Piece'); ?></legend>
 		
@@ -14,15 +16,18 @@
 			// echo $this->Form->input('category_id');
 			echo "<select name='data[Piece][category_id]' id='PieceCategoryId'>";
 			foreach ($categories as $category){
-				if ($category['Category']['parent_id'] == NULL){
-					echo "<optgroup label='".$category['Category']['title']."'>";
-					foreach ($category['childCats'] as $subcat){
-						echo "<option value='".$subcat['id']."'>".$subcat['title']."</option>";
-						
-					}
-					echo "</optgroup>";
-				}
+				echo "<option value='".$category['Category']['id']."'>".$category['Category']['title']."</option>";		
 			}
+			// foreach ($categories as $category){
+			// 	if ($category['Category']['parent_id'] == NULL){
+			// 		echo "<optgroup label='".$category['Category']['title']."'>";
+			// 		foreach ($category['childCats'] as $subcat){
+			// 			echo "<option value='".$subcat['id']."'>".$subcat['title']."</option>";
+						
+			// 		}
+			// 		echo "</optgroup>";
+			// 	}
+			// }
 			echo "</select>";
 		?>
 	</fieldset>

@@ -52,12 +52,16 @@ class Category extends AppModel {
 	            'create_directory' => true,
 	            'allowed_mime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/JPG'),
 	            'allowed_ext' => array('.jpg', '.jpeg', '.png'),
-				'zoomCrop' => true,
-				            'thumbsizes' => array(
-							      'cat' => array('width' => 300, 'height' => 300,'maxDimension' => 'height', 'thumbnailQuality' => 100, 'zoomCrop' => true)
-							    )
+				// 'zoomCrop' => true,
+				//             'thumbsizes' => array(
+				// 			      'cat' => array('width' => 300, 'height' => 300,'maxDimension' => 'height', 'thumbnailQuality' => 100, 'zoomCrop' => true)
+				// 			    )
 	        )
 	    )
 	);
+
+	function getCurrentWork(){
+		return $this->find('all',array('conditions'=>array('Category.new_category'=>1)));
+	}
 
 }

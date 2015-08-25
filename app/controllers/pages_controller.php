@@ -1,6 +1,6 @@
 <?php
 class PagesController extends AppController {
-//	var $uses = array();
+	var $uses = array('Pages','Category','Piece');
 	var $components = array('Session', 'Email');
 	var $helpers = array('Textile');
 	
@@ -78,5 +78,7 @@ class PagesController extends AppController {
 	}
 	function newhome(){
 		$this->layout = 'newdefault';
+		$this->set('newWorkCategories',$this->Category->getCurrentWork());
+		$this->set('buyableWork',$this->Piece->getBuyableWork(true));
 	}	
 }

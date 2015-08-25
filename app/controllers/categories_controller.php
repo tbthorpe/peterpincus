@@ -66,7 +66,7 @@ class CategoriesController extends AppController {
     function admin_index() {
         $this->layout='admin';
         $this->Category->recursive = 2;
-        //$this->paginate = array('conditions'=>array('Category.parent_id IS NULL'));
+        $this->paginate = array('conditions'=>array('Category.new_category = 1'));
         $this->set('categories', $this->paginate());
         // $parents = $this->Category->parentCat->find('list',array('conditions'));
         //      $this->set(compact('parents'));

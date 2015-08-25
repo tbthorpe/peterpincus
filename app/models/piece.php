@@ -2,20 +2,20 @@
 class Piece extends AppModel {
 	var $name = 'Piece';
 	var $displayField = 'title';
-	var $actsAs = array('Containable');
+	//var $actsAs = array('Containable');
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-	// var $actsAs = array(
-	//     'MeioUpload' => array(
-	//         'filename' => array(
-	//             'dir' => 'img{DS}pieces',
-	//             'create_directory' => true,
-	//             'allowed_mime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/JPG'),
-	//             'allowed_ext' => array('.jpg', '.jpeg', '.png'),
-	//             'default' => 'default.jpg',
-	//         )
-	//     )
-	// );
+	var $actsAs = array(
+	    'MeioUpload' => array(
+	        'filename' => array(
+	            'dir' => 'img{DS}pieces',
+	            'create_directory' => true,
+	            'allowed_mime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/JPG'),
+	            'allowed_ext' => array('.jpg', '.jpeg', '.png'),
+	            'default' => 'default.jpg',
+	        )
+	    )
+	);
 	// 'zoomCrop' => true,
 	//             'thumbsizes' => array(
 	// 				  'medium' => array('width' => 800, 'height' => 600),
@@ -41,7 +41,14 @@ class Piece extends AppModel {
 		)
 	);
 	
-	function getBuyableWork(){
-		return $this->find('all',array('conditions'=>array('Piece.buyable'=>1)));
+	function getBuyableWork($new = false){
+		if ($new){
+			return $this->find('all',array('conditions'=>array('Piece.purchaseStatus'=>'availableforsale', 'Piece.version' => 1), 'recursive'=>1));
+		} else {
+			return $this->find('all',array('conditions'=>array('Piece.buyable'=>1)));
+			
+		}
+		
 	}
+
 }

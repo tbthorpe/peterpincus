@@ -123,7 +123,9 @@ class PiecesController extends AppController {
 				$this->Session->setFlash(__('The piece could not be saved. Please, try again.', true));
 			}
 		}
-		$categories = $this->Piece->Category->find('all',array('contain'=>array('childCats')));
+		// $categories = $this->Piece->Category->find('all',array('contain'=>array('childCats')));
+		$categories = $this->Piece->Category->find('all',array('conditions'=>array('Category.new_category'=>1)));
+		
 		$this->set(compact('categories'));
 	}
 
