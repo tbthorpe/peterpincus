@@ -379,7 +379,7 @@ header .header-content .header-content-inner p {
 /****************/
 /*WORK SECTION*/
 /****************/
-section.work{
+section#work{
 
 }
 #work .current-work-slider{
@@ -399,6 +399,67 @@ section.work{
     margin-top:10px;
     font-family: 'Helvetica Neue',Arial,sans-serif;
     font-weight: 100;
+}
+
+/****************/
+/* ABOUT SECTION*/
+/****************/
+#about .left{
+    float:left;
+    width:225px;
+    margin-right:40px;
+}
+#about .right{
+    float:left;
+    width:675px;
+    font-family: 'Helvetica Neue',Arial,sans-serif;
+    font-weight: 100;
+}
+
+#about .left UL#about-nav{
+    list-style-type: none;
+    padding:0;
+    margin:30px 0 0 0;
+}
+#about .left UL#about-nav li{
+    cursor:pointer;
+    font-family: 'Helvetica Neue',Arial,sans-serif;
+    font-weight: 100;
+}
+#about .left UL#about-nav li:hover{
+    color:black;
+}
+#about .left UL#about-nav li.active{
+    color:black;
+    cursor:default;
+}
+
+#about .right div{
+    font-family: 'Helvetica Neue',Arial,sans-serif;
+    font-weight: 100;
+    font-size:14px;
+    line-height:18px;
+    display:none;
+    margin-top:-6px;
+}
+#about .right div.active{
+    display:block;
+}
+
+
+
+/****************/
+/* PURCHASE SECTION*/
+/****************/
+section#purchase{
+
+}
+#purchase .buyable{
+    float:left;
+    margin:0 16px 0 0;
+}
+#purchase .buyable:nth-child(5n+5){
+    margin-right:0px;
 }
 
 

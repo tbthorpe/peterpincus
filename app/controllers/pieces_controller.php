@@ -38,7 +38,7 @@ class PiecesController extends AppController {
 		$purchase_cropped = $this->JqImgcrop->cropImage("buy",175, $this->data['Piece']['x1'], $this->data['Piece']['y1'], $this->data['Piece']['x2'], $this->data['Piece']['y2'], $this->data['Piece']['w'], $this->data['Piece']['h'], $this->data['Piece']['imagePath'], $this->data['Piece']['imagePath']);
 		$cropped = $this->JqImgcrop->cropImage("tn",50, $this->data['Piece']['x1'], $this->data['Piece']['y1'], $this->data['Piece']['x2'], $this->data['Piece']['y2'], $this->data['Piece']['w'], $this->data['Piece']['h'], $this->data['Piece']['imagePath'], $this->data['Piece']['imagePath']);
 		
-	//	debug($cropped);
+		debug($cropped);
 		$this->Session->setFlash(__('Word?', true));
 		$this->redirect(array('action' => 'index'));
 	}
@@ -85,7 +85,7 @@ class PiecesController extends AppController {
 
 	function admin_index() {
         $this->paginate = array(
-            'order' => array('Piece.created' => 'DESC')
+            'order' => array('Piece.id' => 'DESC')
         );
 		$this->layout = 'admin';
 		$this->Piece->recursive=1;

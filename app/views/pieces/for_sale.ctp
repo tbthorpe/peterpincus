@@ -47,7 +47,7 @@
 				openEffect	: 'none',
 				closeEffect	: 'none',
 				type: 'iframe', 
-				href: 'http://peterpincus.com/pages/order/'+$(this).attr('que')
+				href: '/pages/order/'+$(this).attr('que')
 			});
 	});
 	$('A.inboxbuy').live('click', function(){

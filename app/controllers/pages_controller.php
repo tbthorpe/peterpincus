@@ -1,6 +1,6 @@
 <?php
 class PagesController extends AppController {
-	var $uses = array('Pages','Category','Piece');
+	var $uses = array('Pages','Category','Piece','News');
 	var $components = array('Session', 'Email');
 	var $helpers = array('Textile');
 	
@@ -63,16 +63,24 @@ class PagesController extends AppController {
 	}
 	function order($id = NULL){
 		$this->layout = 'empty';
-		if (!empty($this->data)) {
+		if (!empty($this->data)){
 			// debug ($this->data);
-			$this->Email->from    = $this->data['Page']['email'];
-			$this->Email->to      = 'pjpincus1@gmail.com';
-			$this->Email->subject = 'Order Request from Peterpincus.com';
-			$this->Email->send($this->data['Page']['name']. "\n\n" . $this->data['Page']['message']."\n\n"."ORDERING: http://peterpincus.com/pieces/view/".$this->data['Page']['order_id']);
-			$this->set('ordered',true);
+			if (filter_var($this->data['Page']['email'], FILTER_VALIDATE_EMAIL)) {
+				$this->Email->from    = $this->data['Page']['email'];
+				// $this->Email->to      = 'pjpincus1@gmail.com';
+				$this->Email->to      = 'tbthorpe@gmail.com';
+				$this->Email->subject = 'Order Request from Peterpincus.com';
+				$this->Email->send($this->data['Page']['name']. "\n\n" . $this->data['Page']['message']."\n\n"."ORDERING: http://peterpincus.com/pieces/view/".$this->data['Page']['order_id']);
+				$this->set('ordered',true);
+			} else {
+				$this->Session->setFlash(__('email all jacked up', true));	
+				$this->set('ordered',false);
+			}
+			
 		} else {
+			
 			$this->set('ordered',false);
-			$this->set('order_id',$id);
+			//$this->set('order_id',$id);
 		}
 
 	}
@@ -80,5 +88,7 @@ class PagesController extends AppController {
 		$this->layout = 'newdefault';
 		$this->set('newWorkCategories',$this->Category->getCurrentWork());
 		$this->set('buyableWork',$this->Piece->getBuyableWork(true));
+		$this->set('news',$this->News->getLatestNews(5));
+		
 	}	
 }

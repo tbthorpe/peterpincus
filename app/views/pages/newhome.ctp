@@ -62,25 +62,70 @@
         </div>
     </section>
 
+    <section class="bg-primary" id="news">
+        <div class="container">
+            <?php foreach ($news as $post): ?>
+            <div class="newsPost">
+                <div class="image">
+                    <img src="<?php echo '/img/news/'.$post['POST']['filename'] ?>">
+                </div>
+            </div>  
+                <a class="fancybox" imglist="<?php echo $imglist ?>" title="<?php echo $cat['Category']['copy']; ?>">
+                    <img src="<?php echo '/img/categories/'.$cat['Category']['filename']; ?>" alt="">
+                    <div class="current-title"><?php echo $cat['Category']['title']; ?></div>
+                </a>                
+            <?php endforeach; ?>
+
+        </div>
+    </section>
+
+
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="left">
+                <img src="/img/peter-about.jpg">
+                <ul id="about-nav">
+                    <li view="biography" class="link active">BIOGRAPHY</li>
+                    <li view="statement" class="link" >STATEMENT</li>
+                    <li>CV</li>
+                    <li>CONTACT</li>
+                </ul>
             </div>
             <div class="right">
+                <div class="active" id="biography">
+                    <p>Born in Rochester, NY, Peter Pincus is a ceramic artist and instructor. He joined the School for American Crafts as Visiting Assistant Professor in Ceramics in Fall 2014. Peter received his BFA (2005) and MFA (2011) in ceramics from Alfred University, and in between was a resident artist at the Mendocino Art Center in Mendocino,California. Since graduate school, Peter worked as the Studio Manager and Resident Artist Coordinator of the Genesee Center for Arts and Education in Rochester, NY, Adjunct Professor of three dimensional studies at Roberts Wesleyan College and has established a studio in Penfield NY. </p>
+
+                    <p>Peter works in colored porcelain to create three dimensional paintings out of pots. His work has been exhibited in venues such as the Museum of Contemporary Craft, John Michael Kohler Arts Center, San Angelo Museum of Fine Arts, Icheon World Ceramics Center, AKAR Gallery, TRAX Gallery, Plinth Gallery, the Art of the Pot studio tour, the American Pottery Festival, Greenwich House Pottery and National Council on Education for the Ceramic Art. A recipient of the NICHE award for slip cast ceramics, Peter's work can be found in numerous private and public collections. In 2012, Ceramics Monthly featured Peter's work on the cover and in the article "Painting Pots from the Inside."</p>
+                </div>
+                <div id="statement">
+                    <p>As an early career ceramic artist, I am part of a lively and rapidly changing conversation in which the worlds of art, craft, and design are increasingly defined not only by their distinctions, but also by their similarities and relationships to one another. There is tremendous meaning in the transcendence of the pot to engage in all of these ideologies; object of substantial craftsmanship, object of use, object of design intellect, and object of conceptual metaphor.</p>
+
+                    <p>I produce three-dimensional paintings out of pots. The big challenge is to study and make objects that have a distinct location in the home, using our familiarity toward them to instigate new discussions about the role of the vessel in our place and time. I focus on containers that are status symbols saved for special occasions, generally deemed distinct because of the value of what they hold rather than for what they are. But to me, in between such occasions, they become canvases that visually illustrate the defining spirit of the times. They are useful as well as opulent. But they can be so much more.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section class="bg-primary" id="purchase">
         <div class="container">
-            <?php debug($buyableWork); ?>
-            <?php foreach ($buyableWork as $piece): 
-            debug($work);?>
-                <img class="thumb" title="<?php echo $piece['title']; ?>" alt="<?php echo $piece['description']; ?>" que="<?php echo $piece['id']; ?>" sale="<?php echo $piece['purchaseStatus']; ?>"  big="<?php echo $piece['filename']; ?>" pr="<?php echo $piece['price']; ?>" src="/img/pieces/<?php 
-                        $ext = strtolower(substr(basename($piece['filename']), strrpos(basename($piece['filename']), ".") + 1)); 
-                        $extLen = strlen($ext)+1;
-                        $filename = substr_replace($piece['filename'],"_tn",strlen($piece['filename'])-$extLen,0);
-                        echo $filename; ?>">            
+            <?php foreach ($buyableWork as $piece): ?>
+                <div class="buyable">
+                    <a class="work_thumb_<?php echo $piece['Piece']['id']; ?>"><img class="thumb" title="<?php echo $piece['Piece']['title']; ?>" alt="<?php echo $piece['Piece']['description']; ?>" big="<?php echo $piece['Piece']['filename']; ?>" src="/img/pieces/<?php 
+                    $ext = strtolower(substr(basename($piece['Piece']['filename']), strrpos(basename($piece['Piece']['filename']), ".") + 1)); 
+                    $extLen = strlen($ext)+1;
+                    $filename = substr_replace($piece['Piece']['filename'],"_buy",strlen($piece['Piece']['filename'])-$extLen,0);
+                    echo $filename; ?>"></a>
+                    <p class="piecetitle"><?php echo $piece['Piece']['title'] ?></p>
+                    <?php if ($piece['Piece']['purchaseStatus'] == 'sold'): ?>
+                        <p class="sold-piece" que='<?php echo $piece['Piece']['id'] ?>'><img src="/img/sold_new.png">&nbsp;SOLD</p>
+                    <? else: ?>
+                        <p class="purchase-price" que='<?php echo $piece['Piece']['id'] ?>'>$<?php echo $piece['Piece']['price'] ?></p>
+                    <? endif; ?>
+                    <div style="display:none;" id="title_<?php echo $piece['Piece']['id']; ?>">
+                        <?php echo $textile->parse($piece["Piece"]["description"]).'<br><br><a class="inboxbuy" que="'.$piece["Piece"]["id"].'">$'.$piece["Piece"]["price"]. '- PURCHASE</a>'; ?>
+                    </div>
+                </div>
+
             <?php endforeach; ?>
         </div>
     </section>
@@ -317,3 +362,80 @@
           });
         });
     </script>
+    <script>
+    $('P.purchase-price').on('click', function(){
+        $.fancybox({
+                minHeight   : 400,
+                minWidth    : 350,
+                maxWidth    : 400,              
+                fitToView   : false,
+                closeClick  : false,
+                openEffect  : 'none',
+                closeEffect : 'none',
+                type: 'iframe', 
+                href: '/pages/order/'+$(this).attr('que')
+            });
+    });
+    $('A.inboxbuy').on('click', function(){
+        $.fancybox.close();
+        $.fancybox({
+                minHeight   : 400,
+                minWidth    : 350,
+                maxWidth    : 400,              
+                fitToView   : false,
+                closeClick  : false,
+                openEffect  : 'none',
+                closeEffect : 'none',
+                type: 'iframe', 
+                href: 'http://peterpincus.com/pages/order/'+$(this).attr('que')
+            });
+    });
+    
+    <? foreach ($buyableWork as $piece): ?>
+
+            $('.work_thumb_<?= $piece["Piece"]["id"]; ?>').click(function(){
+                $.fancybox.open([
+                    {href : '/img/pieces/<?= $piece["Piece"]["filename"]; ?>'},
+                    <? foreach ($piece['Images'] as $k=>$img): ?>
+                    {href : '/img/pieces/<?= $img["filename"]; ?>'}, 
+                    <? endforeach; ?>
+                    ],
+                    {
+                        'margin'        : 0,
+                        'padding'       : 0,
+                        'prevEffect'    : 'fade',
+                        'nextEffect'    : 'fade',
+                            fitToView   : false,
+                            closeClick  : false,
+                            openEffect  : 'none',
+                            closeEffect : 'none',
+                            maxHeight   : 600,
+                            helpers : {
+                                title : {
+                                    type : 'inside'
+                                }
+                            },
+                            beforeLoad: function() {
+                                var el
+                                el = $('#title_' + <?= $piece["Piece"]["id"]; ?>);
+                                if (el.length) {
+                                    this.title = el.html();
+                                }
+                            }
+                    });
+                    
+                });
+<?php endforeach; ?>
+
+
+
+// ABOUT SECTION
+
+$("#about .left UL#about-nav li.link").click(function(){
+    var that = $(this);
+    $("#about .left UL#about-nav li.link").removeClass('active');
+    that.addClass('active');
+    $("#about .right div").css('display','none');
+    $("#about .right div#"+that.attr('view')).css('display','block');
+})
+</script>

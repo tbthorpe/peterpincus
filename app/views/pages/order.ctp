@@ -14,7 +14,7 @@
 		echo $this->Form->input('name',array('label'=>'Your name:'));
 		echo $this->Form->input('email',array('label'=>'Your email:'));
 		echo $this->Form->input('message',array('type'=>'textarea', 'label'=>'Any notes or messages for me<br>regarding the order?'));
-		echo $this->Form->input('order_id', array('value'=> $order_id, 'type'=>'hidden'))
+		//echo $this->Form->input('order_id', array('value'=> $order_id, 'type'=>'hidden'))
 	?>
 <?php echo $this->Form->end(__('Place Order', true));?>
 </div>

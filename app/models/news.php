@@ -19,13 +19,12 @@ class News extends AppModel {
 	            'create_directory' => true,
 	            'allowed_mime' => array('image/jpeg', 'image/pjpeg', 'image/png', 'image/JPG'),
 	            'allowed_ext' => array('.jpg', '.jpeg', '.png'),
-				'zoomCrop' => true,
-				            'thumbsizes' => array(
-								  'medium' => array('width' => 800, 'height' => 600),
-							      'small' => array('width' => 400, 'height' => 400,'maxDimension' => 'height', 'thumbnailQuality' => 100, 'zoomCrop' => true),
-							    )
 	        )
 	    )
 	);
+
+	function getLatestNews($limit){
+		return $this->find('all',array('conditions'=>array('News.created >'=>'2015-08-25 20:14:30'), 'limit'=>$limit));
+	}
 	
 }
