@@ -1,4 +1,5 @@
 <?php  
+		debug($uploaded);
         echo $form->create('Piece', array('action' => 'createimagestep3','admin'=>true,"enctype" => "multipart/form-data"));     
         echo $form->input('id'); 
         echo $form->hidden('title'); 

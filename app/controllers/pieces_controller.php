@@ -21,8 +21,6 @@ class PiecesController extends AppController {
 			$this->data['Piece']['filename'] = $uploaded['imageName'];
 			$this->Piece->create();
 			if ($this->Piece->save($this->data)) {
-
-	            
 				$this->Session->setFlash(__('good so far. one more step.', true));
 				// $this->redirect(array('action' => 'index'));
 			} else {
@@ -38,7 +36,6 @@ class PiecesController extends AppController {
 		$purchase_cropped = $this->JqImgcrop->cropImage("buy",175, $this->data['Piece']['x1'], $this->data['Piece']['y1'], $this->data['Piece']['x2'], $this->data['Piece']['y2'], $this->data['Piece']['w'], $this->data['Piece']['h'], $this->data['Piece']['imagePath'], $this->data['Piece']['imagePath']);
 		$cropped = $this->JqImgcrop->cropImage("tn",50, $this->data['Piece']['x1'], $this->data['Piece']['y1'], $this->data['Piece']['x2'], $this->data['Piece']['y2'], $this->data['Piece']['w'], $this->data['Piece']['h'], $this->data['Piece']['imagePath'], $this->data['Piece']['imagePath']);
 		
-		debug($cropped);
 		$this->Session->setFlash(__('Word?', true));
 		$this->redirect(array('action' => 'index'));
 	}

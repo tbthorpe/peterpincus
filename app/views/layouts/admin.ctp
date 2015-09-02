@@ -38,7 +38,7 @@
 <body>
 	<div id="container">
 		<div id="header">
-			<h1>Pincus. Admin.</h1>
+			<h1>test Pincus. Admin.</h1>
 			<div id="admin-nav">
 				<ul>
 					<li><a href="/admin/news">News</a></li>

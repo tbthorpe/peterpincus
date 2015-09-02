@@ -477,7 +477,9 @@ class Folder extends Object {
  * @access public
  */
 	function create($pathname, $mode = false) {
+		echo dirname(__FILE__). "<BR><BR>\r\n";
 		if (is_dir($pathname) || empty($pathname)) {
+			echo "<BR><BR>".$pathname;
 			return true;
 		}
 
