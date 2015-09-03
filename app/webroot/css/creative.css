@@ -454,6 +454,11 @@ section#work{
 #news .newsPost{
     margin-bottom:30px;
     clear:both;
+    padding-bottom:30px;
+    border-bottom:1px solid white;
+}
+#news .newsPost:last-child{
+    border-bottom:none;
 }
 #news .newsPost:after {
   content:"";
@@ -495,12 +500,26 @@ section#purchase{
 
 
 footer#footer{
+    padding:5px 0px;
+    color:white;
     position:fixed;
     bottom:0px;
-    height:40px;
     background-color:#817e7c;
     border-top:1px solid white;
     width:100%;
+}
+footer#footer .container{
+    text-align:center;
+}
+footer#footer .container a{
+
+}
+footer#footer .container a img{
+    height:25px;
+    width:25px;
+}
+footer#footer .container span{
+    margin-left:10px;
 }
 
 

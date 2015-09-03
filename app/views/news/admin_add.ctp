@@ -5,7 +5,7 @@
 	<?php
 		echo $this->Form->input('title');
 		echo $this->Form->input('body');
-		echo $this->Form->input('filename',array('type'=>'file'));
+		echo $this->Form->input('filename',array('type'=>'file', 'label'=>'Image 245w x 220h'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>

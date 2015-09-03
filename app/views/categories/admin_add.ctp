@@ -5,8 +5,7 @@
 	<?php
 		echo $this->Form->input('title');
 		echo $this->Form->input('copy');
-		echo $this->Form->input('filename',array('type'=>'file'));
-		echo $this->Form->input('parent_id', array('options' => $parents, 'empty' => ''));
+		echo $this->Form->input('filename',array('type'=>'file', 'label'=>'Image: 280w x 420h'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit', true));?>
@@ -14,8 +13,6 @@
 <div class="actions">
 	<h3><?php __('Actions'); ?></h3>
 	<ul>
-
-		<li><?php echo $this->Html->link(__('List Categories', true), array('action' => 'index'));?></li>
 		<li><?php echo $this->Html->link(__('List Categories', true), array('controller' => 'categories', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Category', true), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>
