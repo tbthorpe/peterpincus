@@ -199,7 +199,8 @@
 .fancybox-opened .fancybox-title {
 	visibility: visible;
 	text-align:center;
-	font-family:serif;
+	font-family:'Helvetica Neue',Arial,sans-serif;
+	font-weight:100;
 }
 
 .fancybox-title-float-wrap {
