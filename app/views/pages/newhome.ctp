@@ -88,7 +88,7 @@
                     <li view="biography" class="link active">BIOGRAPHY</li>
                     <li view="statement" class="link" >STATEMENT</li>
                     <li>CV</li>
-                    <li>CONTACT</li>
+                    <li><a href="mailto:pjpincus1@gmail.com">CONTACT</a></li>
                 </ul>
             </div>
             <div class="right">
