@@ -44,7 +44,6 @@
 					<li><a href="/admin/news">News</a></li>
 					<li><a href="/admin/pieces">Pieces</a></li>
 					<li><a href="/admin/categories">Categories</a></li>					
-					<li><a href="/admin/pages">'About' Pages</a></li>
 				</ul>
 			</div>
 		</div>
