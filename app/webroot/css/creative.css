@@ -469,6 +469,12 @@ section#work{
     float:left;
     width:665px;
 }
+#news .newsPost .news-copy h1{
+    margin-top:0px;
+    margin-bottom:20px;
+    font-size:24px !important;
+
+}
 
 
 

@@ -22,13 +22,13 @@
                     <li>
                         <a class="page-scroll" href="#news">NEWS</a>
                     </li>
-                    
-                    <li>
-                        <a class="page-scroll" href="#purchase">PURCHASE</a>
-                    </li>
                     <li>
                         <a class="page-scroll" href="#about">ABOUT</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="#purchase">PURCHASE</a>
+                    </li>
+                    
                 </ul>
                 <div class="show-on-big full-page-header-logo">
                         <span class="peter-name">Peter Pincus</span><span class='peter-title'>CERAMIC ARTIST</span>
@@ -70,6 +70,7 @@
                     <img src="<?php echo '/img/news/'.$post['News']['filename'] ?>">
                 </div>
                 <div class="news-copy">
+                    <h1><?php echo $post['News']['title']; ?></h1>
                     <?php echo $textile->parse($post['News']['body']); ?>
                 </div>
             </div>                 
