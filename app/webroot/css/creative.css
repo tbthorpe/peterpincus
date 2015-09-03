@@ -507,14 +507,31 @@ section#purchase{
     margin-right:0px;
 }
 
-
 footer#footer{
+    padding:5px 0px;
+    color:white;
+    position:fixed;
+    bottom:0px;
+    width:100%;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+footer#footer.affix{
     padding:5px 0px;
     color:white;
     position:fixed;
     bottom:0px;
     background-color:#817e7c;
     border-top:1px solid white;
+    width:100%;
+}
+footer#footer.affix-top{
+    color:white;
+    position:fixed;
+    bottom:0px;
+    background-color:transparent;
+    border-top:none;
     width:100%;
 }
 footer#footer .container{

@@ -40,6 +40,11 @@
         offset: {
             top: 100
         }
+    });
+    $('#footer').affix({
+        offset: {
+            top: 100
+        }
     })
 
     // Initialize WOW.js Scrolling Animations
