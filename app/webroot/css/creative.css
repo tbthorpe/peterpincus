@@ -374,6 +374,9 @@ header .header-content .header-content-inner p {
     }
 }
 
+section{
+    border-top: 2px solid #e7e7e7;
+}
 
 
 
@@ -381,7 +384,7 @@ header .header-content .header-content-inner p {
 /*WORK SECTION*/
 /****************/
 section#work{
-
+    border-top:none;
 }
 #work .current-work-slider{
 
@@ -464,8 +467,9 @@ section#work{
     margin-bottom:30px;
     clear:both;
     padding-bottom:30px;
-    border-bottom:1px solid white;
+    border-bottom:1px solid rgba(217, 217, 217, 0.32);
 }
+
 #news .newsPost:last-child{
     border-bottom:none;
 }
@@ -499,6 +503,13 @@ section#work{
 section#purchase{
 
 }
+#purchase h1{
+    font-size:24px !important;
+    margin-bottom:30px;
+    text-align:center;
+    font-family: 'Helvetica Neue',Arial,sans-serif;
+    font-weight: 100;
+}
 #purchase .buyable{
     float:left;
     margin:0 16px 0 0;
@@ -506,6 +517,34 @@ section#purchase{
 #purchase .buyable:nth-child(5n+5){
     margin-right:0px;
 }
+
+#purchase UL#galleries{
+    list-style-type: none;
+    margin:0px;
+    padding:0px;
+}
+#purchase UL#galleries:after {
+  content:"";
+  display:table;
+  clear:both;
+}
+#purchase UL#galleries LI{
+    float:left;
+}
+#purchase UL#galleries LI:nth-child(2n+1){
+    margin-left:170px;
+    margin-right:15px;
+}
+#purchase UL#galleries LI:nth-child(2n+2){
+    margin-left:15px;
+    margin-right:0px;
+}
+
+#purchase UL#galleries LI:nth-child(1),
+#purchase UL#galleries LI:nth-child(2){
+    margin-bottom:25px;
+}
+
 
 footer#footer{
     padding:5px 0px;

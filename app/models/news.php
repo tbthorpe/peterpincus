@@ -24,7 +24,7 @@ class News extends AppModel {
 	);
 
 	function getLatestNews($limit){
-		return $this->find('all',array('conditions'=>array('News.created >'=>'2015-08-25 20:14:30'), 'limit'=>$limit));
+		return $this->find('all',array('conditions'=>array('News.created >'=>'2015-08-25 20:14:30'), 'limit'=>$limit, 'order'=>array('News.id DESC')));
 	}
 	
 }

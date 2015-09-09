@@ -87,7 +87,7 @@
                 <ul id="about-nav">
                     <li view="biography" class="link active">BIOGRAPHY</li>
                     <li view="statement" class="link" >STATEMENT</li>
-                    <li>CV</li>
+                    <li><a href="PincusPeter_Resume_2015.pdf" target="_blank">CV</a></li>
                     <li><a href="mailto:pjpincus1@gmail.com">CONTACT</a></li>
                 </ul>
             </div>
@@ -98,9 +98,9 @@
                     <p>Peter works in colored porcelain to create three dimensional paintings out of pots. His work has been exhibited in venues such as the Museum of Contemporary Craft, John Michael Kohler Arts Center, San Angelo Museum of Fine Arts, Icheon World Ceramics Center, AKAR Gallery, TRAX Gallery, Plinth Gallery, the Art of the Pot studio tour, the American Pottery Festival, Greenwich House Pottery and National Council on Education for the Ceramic Art. A recipient of the NICHE award for slip cast ceramics, Peter's work can be found in numerous private and public collections. In 2012, Ceramics Monthly featured Peter's work on the cover and in the article "Painting Pots from the Inside."</p>
                 </div>
                 <div id="statement">
-                    <p>As an early career ceramic artist, I am part of a lively and rapidly changing conversation in which the worlds of art, craft, and design are increasingly defined not only by their distinctions, but also by their similarities and relationships to one another. There is tremendous meaning in the transcendence of the pot to engage in all of these ideologies; object of substantial craftsmanship, object of use, object of design intellect, and object of conceptual metaphor.</p>
+                    <p>As an early career ceramic artist, I am part of a lively and rapidly changing conversation in which the worlds of art, craft, and design are increasingly defined not only by their distinctions, but also by their similarities and relationships to one another.  I’ve found meaning in the ceramic vessel as it relates to this conversation.  I aim to engage in my studio practice and subsequent output with equivalent rigor in workmanship, use, design, and metaphor.</p>
 
-                    <p>I produce three-dimensional paintings out of pots. The big challenge is to study and make objects that have a distinct location in the home, using our familiarity toward them to instigate new discussions about the role of the vessel in our place and time. I focus on containers that are status symbols saved for special occasions, generally deemed distinct because of the value of what they hold rather than for what they are. But to me, in between such occasions, they become canvases that visually illustrate the defining spirit of the times. They are useful as well as opulent. But they can be so much more.</p>
+                    <p>I produce three-dimensional paintings out of pots.  My objective is to study and make objects that have a distinct location in the home, using our familiarity toward them to instigate new discussions about the role of the vessel in our place and time.  I focus on containers that are status symbols saved for special occasions, generally deemed distinct because of the value of what they hold rather than for what they are.  But to me, in between such occasions, they become canvases that visually illustrate the defining spirit of the times.  They are useful as well as opulent.  But they can be so much more.</p>
                 </div>
             </div>
         </div>
@@ -108,6 +108,33 @@
 
     <section class="bg-primary" id="purchase">
         <div class="container">
+            <h1>For the time being, visit these galleries to inquire/purchase my current work:</h1>
+            <ul id="galleries">
+                <li>
+                    <a href="http://www.wexlergallery.com/artists/ceramic-mixedmedia/Pincus_Peter/index.php" target="_blank">
+                        <img src="img/wexler.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://ferrincontemporary.com/portfolio-items/peter-pincus/" target="_blank">
+                        <img src="img/ferrin.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.artisangal.com/peter-pincus" target="_blank">
+                        <img src="img/artisan.png">
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.studiokotokoto.com/" target="_blank">
+                        <img src="img/koto.png">
+                    </a>
+                </li>
+            </ul>
+
+
+
+            <?php if (false): ?>
             <?php foreach ($buyableWork as $piece): ?>
                 <div class="buyable">
                     <a class="work_thumb_<?php echo $piece['Piece']['id']; ?>"><img class="thumb" title="<?php echo $piece['Piece']['title']; ?>" alt="<?php echo $piece['Piece']['description']; ?>" big="<?php echo $piece['Piece']['filename']; ?>" src="/img/pieces/<?php 
@@ -127,6 +154,7 @@
                 </div>
 
             <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </section>
 
