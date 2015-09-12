@@ -376,6 +376,7 @@ header .header-content .header-content-inner p {
 
 section{
     border-top: 2px solid #e7e7e7;
+    padding:60px 0px;
 }
 
 
@@ -468,6 +469,10 @@ section#work{
     clear:both;
     padding-bottom:30px;
     border-bottom:1px solid rgba(217, 217, 217, 0.32);
+}
+#news .newsPost a{
+    color:white;
+    text-decoration: underline;
 }
 
 #news .newsPost:last-child{

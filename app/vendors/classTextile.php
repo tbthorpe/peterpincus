@@ -1288,7 +1288,7 @@ class Textile
 		$text = $this->glyphs($text);
 		$url = $this->shelveURL($url.$slash);
 
-		$opentag = '<a href="' . $url . '"' . $atts . $this->rel . '>';
+		$opentag = '<a target="_blank" href="' . $url . '"' . $atts . $this->rel . '>';
 		$closetag = '</a>';
 		$tags = $this->storeTags($opentag, $closetag);
 		$out = $tags['open'].trim($text).$tags['close'];
