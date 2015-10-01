@@ -213,10 +213,13 @@
 
         $(document).ready(function(){
           $('.current-work-slider').bxSlider({
+            slideWidth: 280,
             minSlides: 3,
             maxSlides: 3,
-            slideWidth: 280,
-            slideMargin: 10
+            moveSlides: 1,
+            slideMargin: 30,
+            infiniteLoop: false,
+            pager: false,
           });
         });
     </script>
