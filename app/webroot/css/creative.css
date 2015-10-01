@@ -68,7 +68,7 @@ p {
 
 section {
     padding: 100px 0;
-    width:970px;
+    max-width:970px;
     margin:0 auto;
 }
 
@@ -319,6 +319,12 @@ header {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+@media(max-width:768px) {
+    header{
+        background-image: none;
+        height:100px;
+    }
 }
 
 header .header-content {

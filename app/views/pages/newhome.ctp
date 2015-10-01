@@ -53,7 +53,7 @@
             foreach ($cat['Pieces'] as $p){ $imglist .= '/img/pieces/'.$p['filename'].',';}
                 $imglist = substr($imglist, 0,-1);
 ?>
-                <a class="fancybox" imglist="<?php echo $imglist ?>" title="<?php echo $cat['Category']['copy']; ?>">
+                <a class="sfancybox" imglist="<?php echo $imglist ?>" title="<?php echo $cat['Category']['copy']; ?>">
                     <img src="<?php echo '/img/categories/'.$cat['Category']['filename']; ?>" alt="">
                     <div class="current-title"><?php echo $cat['Category']['title']; ?></div>
                 </a>                
@@ -213,13 +213,10 @@
 
         $(document).ready(function(){
           $('.current-work-slider').bxSlider({
-            slideWidth: 280,
-            minSlides: 2,
+            minSlides: 3,
             maxSlides: 3,
-            moveSlides: 1,
-            slideMargin: 30,
-            infiniteLoop: false,
-            pager: false,
+            slideWidth: 280,
+            slideMargin: 10
           });
         });
     </script>
